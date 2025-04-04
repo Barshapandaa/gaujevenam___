@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gaujivanam - Cow Welfare & Organic Products</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css" rel="stylesheet">
+<script>tailwind.config={theme:{extend:{colors:{primary:'#8B0000',secondary:'#1E5631'},borderRadius:{'none':'0px','sm':'2px',DEFAULT:'4px','md':'8px','lg':'12px','xl':'16px','2xl':'20px','3xl':'24px','full':'9999px','button':'4px'}}}}</script>
+<style>
+:where([class^="ri-"])::before { content: "\f3c2"; }
+body { font-family: 'Inter', sans-serif; }
+.nav-link { @apply px-4 py-2 text-gray-600 hover:text-primary transition-colors whitespace-nowrap cursor-pointer; }
+.nav-link.active { @apply text-primary font-medium; }
+</style>
+</head>
+<body class="bg-gray-50">
+<header class="bg-white shadow-sm fixed w-full z-50">
+<nav class="container mx-auto px-4 h-16 flex items-center justify-between">
+<div class="flex items-center gap-12">
+<a href="#" class="flex items-center gap-2">
+<img src="https://static.readdy.ai/image/944b2f919b260f940a8e831435d2fb3d/d277dca881b030ac78d5a3413f9df7ff.png" alt="Gaujivanam Logo" class="h-10 w-10">
+</a>
+<div class="hidden lg:flex items-center gap-8">
+<a href="#" onclick="handleNavClick(event, 'home')" class="nav-link active" data-section="home">Home</a>
+<a href="#" onclick="handleNavClick(event, 'about')" class="nav-link" data-section="about">About Us</a>
+<a href="#" onclick="handleNavClick(event, 'cows')" class="nav-link" data-section="cows">Our Cows</a>
+<a href="#" onclick="handleNavClick(event, 'shop')" class="nav-link" data-section="shop">Shop</a>
+<a href="#" onclick="handleNavClick(event, 'adopt')" class="nav-link" data-section="adopt">Adopt</a>
+<a href="#" onclick="handleNavClick(event, 'contact')" class="nav-link" data-section="contact">Contact</a>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<div class="relative">
+<button onclick="toggleLoginDropdown()" class="px-4 py-2 text-primary hover:bg-primary/5 rounded-button font-medium whitespace-nowrap">Login</button>
+<div id="loginDropdown" class="absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-lg hidden">
+<button onclick="showLoginModal()" class="w-full px-4 py-2 text-left hover:bg-gray-50 rounded-t-lg">Customer Portal</button>
+<button onclick="showEmployeeLoginModal()" class="w-full px-4 py-2 text-left hover:bg-gray-50 rounded-b-lg">Employee Portal</button>
+</div>
+</div>
+<button onclick="showGetStartedModal()" class="px-4 py-2 bg-primary text-white hover:bg-primary/90 rounded-button font-medium whitespace-nowrap">Get Started</button>
+</div>
+</nav>
+</header>
+<main class="pt-16">
+<section class="relative h-[600px] overflow-hidden">
+<div class="absolute inset-0 bg-cover bg-center" style="background-image: url('https://public.readdy.ai/ai/img_res/28845575a1b5bba75792e6d4ee3c687d.jpg')"></div>
+<div class="absolute inset-0 bg-gradient-to-r from-[#FDF5E6]/95 to-[#FDF5E6]/30"></div>
+<div class="container mx-auto px-4 h-full flex items-center relative">
+<div class="max-w-2xl">
+<h1 class="text-5xl font-bold text-gray-900 mb-6">Transforming Cow Welfare Through Technology</h1>
+<p class="text-xl text-gray-600 mb-8">We combine compassionate care with smart technology to provide a safe haven for cows while creating sustainable impact through organic products.</p>
+<div class="flex gap-4">
+<button class="px-6 py-3 bg-primary text-white hover:bg-primary/90 rounded-button font-medium whitespace-nowrap">Learn About Our Mission</button>
+<button class="px-6 py-3 border border-gray-200 hover:border-primary/20 hover:bg-primary/5 rounded-button font-medium whitespace-nowrap">View Our Cows</button>
+</div>
+</div>
+</div>
+</section>
+<section class="py-20 bg-[#FDF5E6]">
+<div class="container mx-auto px-4">
+<div class="text-center mb-16">
+<h2 class="text-3xl font-bold text-gray-900 mb-4">Why Choose Gaujivanam?</h2>
+<p class="text-lg text-gray-600 max-w-2xl mx-auto">Our unique approach combines traditional values with modern technology to ensure the best care for our cows.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+<div class="p-6 bg-white rounded-lg shadow-sm border border-gray-100">
+<div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mb-4">
+<i class="ri-heart-pulse-line text-primary text-2xl"></i>
+</div>
+<h3 class="text-xl font-semibold text-gray-900 mb-3">Smart Health Tracking</h3>
+<p class="text-gray-600">Each cow has a digital health profile with real-time monitoring and AI-powered insights for optimal care.</p>
+</div>
+<div class="p-6 bg-white rounded-lg shadow-sm border border-gray-100">
+<div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mb-4">
+<i class="ri-leaf-line text-primary text-2xl"></i>
+</div>
+<h3 class="text-xl font-semibold text-gray-900 mb-3">Organic Products</h3>
+<p class="text-gray-600">Support our mission by purchasing pure, organic dairy products that directly fund cow welfare.</p>
+</div>
+<div class="p-6 bg-white rounded-lg shadow-sm border border-gray-100">
+<div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mb-4">
+<i class="ri-home-heart-line text-primary text-2xl"></i>
+</div>
+<h3 class="text-xl font-semibold text-gray-900 mb-3">Responsible Adoption</h3>
+<p class="text-gray-600">Our thorough verification process ensures cows find loving forever homes with continued monitoring.</p>
+</div>
+</div>
+</div>
+</section>
+<section class="py-20 bg-[#FFF8DC]">
+<div class="container mx-auto px-4">
+<div class="text-center mb-16">
+<h2 class="text-3xl font-bold text-gray-900 mb-4">Our Impact in Numbers</h2>
+<p class="text-lg text-gray-600 max-w-2xl mx-auto">See how our technology-driven approach is making a real difference in cow welfare.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+<div class="p-6 bg-white rounded-lg shadow-sm text-center">
+<div class="text-4xl font-bold text-primary mb-2">1,200+</div>
+<div class="text-gray-600">Cows Rescued</div>
+</div>
+<div class="p-6 bg-white rounded-lg shadow-sm text-center">
+<div class="text-4xl font-bold text-primary mb-2">850+</div>
+<div class="text-gray-600">Successful Adoptions</div>
+</div>
+<div class="p-6 bg-white rounded-lg shadow-sm text-center">
+<div class="text-4xl font-bold text-primary mb-2">100+</div>
+<div class="text-gray-600">Jobs Created</div>
+</div>
+<div class="p-6 bg-white rounded-lg shadow-sm text-center">
+<div class="text-4xl font-bold text-primary mb-2">25,000+</div>
+<div class="text-gray-600">Organic Products Sold</div>
+</div>
+</div>
+</div>
+</section>
+<section class="py-20 bg-[#FDF5E6]">
+<div class="container mx-auto px-4">
+<div class="text-center mb-16">
+<h2 class="text-3xl font-bold text-gray-900 mb-4">Featured Products</h2>
+<p class="text-lg text-gray-600 max-w-2xl mx-auto">Support our mission while enjoying pure, organic dairy products.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+<div class="bg-[#FDF5E6] rounded-lg shadow-sm overflow-hidden border border-[#8B0000]/20">
+<div class="h-48 overflow-hidden">
+<img src="https://public.readdy.ai/ai/img_res/8000ede84f556c9942c5c9d5c6aec1b0.jpg" class="w-full h-full object-cover" alt="Organic Milk">
+</div>
+<div class="p-4">
+<h3 class="text-lg font-semibold text-gray-900 mb-2">Pure Organic Milk</h3>
+<p class="text-gray-600 mb-4">Fresh from our rescued cows</p>
+<div class="flex items-center justify-between">
+<span class="text-primary font-semibold">$4.99/L</span>
+<button class="px-4 py-2 bg-primary text-white hover:bg-primary/90 rounded-button whitespace-nowrap">Add to Cart</button>
+</div>
+</div>
+</div>
+<div class="bg-[#FDF5E6] rounded-lg shadow-sm overflow-hidden border border-[#8B0000]/20">
+<div class="h-48 overflow-hidden">
+<img src="https://public.readdy.ai/ai/img_res/7423f86121d0fa2ed05fa8542654546f.jpg" class="w-full h-full object-cover" alt="Organic Ghee">
+</div>
+<div class="p-4">
+<h3 class="text-lg font-semibold text-gray-900 mb-2">Organic Ghee</h3>
+<p class="text-gray-600 mb-4">Traditional clarified butter</p>
+<div class="flex items-center justify-between">
+<span class="text-primary font-semibold">$12.99/500g</span>
+<button class="px-4 py-2 bg-primary text-white hover:bg-primary/90 rounded-button whitespace-nowrap">Add to Cart</button>
+</div>
+</div>
+</div>
+<div class="bg-[#FDF5E6] rounded-lg shadow-sm overflow-hidden border border-[#8B0000]/20">
+<div class="h-48 overflow-hidden">
+<img src="https://public.readdy.ai/ai/img_res/288f5af6e9cadd8270a338bdc2ac0475.jpg" class="w-full h-full object-cover" alt="Organic Yogurt">
+</div>
+<div class="p-4">
+<h3 class="text-lg font-semibold text-gray-900 mb-2">Natural Yogurt</h3>
+<p class="text-gray-600 mb-4">Probiotic-rich dairy</p>
+<div class="flex items-center justify-between">
+<span class="text-primary font-semibold">$3.99/500g</span>
+<button class="px-4 py-2 bg-primary text-white hover:bg-primary/90 rounded-button whitespace-nowrap">Add to Cart</button>
+</div>
+</div>
+</div>
+<div class="bg-[#FDF5E6] rounded-lg shadow-sm overflow-hidden border border-[#8B0000]/20">
+<div class="h-48 overflow-hidden">
+<img src="https://public.readdy.ai/ai/img_res/7fa010b99fd16ffe85a0b69ab237f2ee.jpg" class="w-full h-full object-cover" alt="Organic Compost">
+</div>
+<div class="p-4">
+<h3 class="text-lg font-semibold text-gray-900 mb-2">Organic Compost</h3>
+<p class="text-gray-600 mb-4">Natural garden fertilizer</p>
+<div class="flex items-center justify-between">
+<span class="text-primary font-semibold">$8.99/5kg</span>
+<button class="px-4 py-2 bg-primary text-white hover:bg-primary/90 rounded-button whitespace-nowrap">Add to Cart</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="py-20 bg-[#FFF8DC]">
+<div class="container mx-auto px-4">
+<div class="text-center mb-16">
+<h2 class="text-3xl font-bold text-gray-900 mb-4">How You Can Help</h2>
+<p class="text-lg text-gray-600 max-w-2xl mx-auto">Join our mission to provide better lives for cows in need.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<div class="bg-white p-6 rounded-lg shadow-sm">
+<div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mb-4">
+<i class="ri-shopping-cart-line text-primary text-2xl"></i>
+</div>
+<h3 class="text-xl font-semibold text-gray-900 mb-3">Shop Products</h3>
+<p class="text-gray-600 mb-4">Purchase our organic products to support cow welfare while enjoying premium quality.</p>
+<button class="px-4 py-2 text-primary hover:bg-primary/5 rounded-button font-medium whitespace-nowrap">View Products</button>
+</div>
+<div class="bg-white p-6 rounded-lg shadow-sm">
+<div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mb-4">
+<i class="ri-heart-line text-primary text-2xl"></i>
+</div>
+<h3 class="text-xl font-semibold text-gray-900 mb-3">Donate</h3>
+<p class="text-gray-600 mb-4">Make a direct contribution to support our rescue and care operations.</p>
+<button class="px-4 py-2 text-primary hover:bg-primary/5 rounded-button font-medium whitespace-nowrap">Donate Now</button>
+</div>
+<div class="bg-white p-6 rounded-lg shadow-sm">
+<div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mb-4">
+<i class="ri-home-heart-line text-primary text-2xl"></i>
+</div>
+<h3 class="text-xl font-semibold text-gray-900 mb-3">Adopt a Cow</h3>
+<p class="text-gray-600 mb-4">Provide a forever home to one of our rescued cows through our adoption program.</p>
+<button class="px-4 py-2 text-primary hover:bg-primary/5 rounded-button font-medium whitespace-nowrap">Learn More</button>
+</div>
+</div>
+</div>
+</section>
+</main>
+<footer class="bg-[#8B0000] text-white py-12">
+<div class="container mx-auto px-4">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+<div>
+<div class="flex items-center gap-2 mb-4">
+<img src="https://static.readdy.ai/image/944b2f919b260f940a8e831435d2fb3d/d277dca881b030ac78d5a3413f9df7ff.png" alt="Gaujivanam Logo" class="h-8 w-8">
+</div>
+<p class="text-gray-400">Transforming cow welfare through technology and compassion.</p>
+</div>
+<div>
+<h4 class="font-semibold mb-4">Quick Links</h4>
+<ul class="space-y-2">
+<li><a href="#" class="text-gray-400 hover:text-white">About Us</a></li>
+<li><a href="#" class="text-gray-400 hover:text-white">Our Cows</a></li>
+<li><a href="#" class="text-gray-400 hover:text-white">Shop</a></li>
+<li><a href="#" class="text-gray-400 hover:text-white">Adopt</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-semibold mb-4">Contact</h4>
+<ul class="space-y-2">
+<li class="text-gray-400">Email: gaujevenam@gmail.com</li>
+<li class="text-gray-400">Phone: +91 98765 43210</li>
+<li class="text-gray-400">Address: west bengal,kolkata</li>
+</ul>
+</div>
+<div>
+<h4 class="font-semibold mb-4">Follow Us</h4>
+<div class="flex space-x-4">
+<a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-gray-700">
+<i class="ri-facebook-fill"></i>
+</a>
+<a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-gray-700">
+<i class="ri-twitter-fill"></i>
+</a>
+<a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-gray-700">
+<i class="ri-instagram-fill"></i>
+</a>
+</div>
+</div>
+</div>
+<div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
+<p>&copy; 2025 Gaujivanam. All rights reserved.</p>
+</div>
+</div>
+</footer>
+<div id="getStartedModal" class="fixed inset-0 bg-black/50 flex items-center justify-center hidden z-50">
+<div class="bg-white rounded-lg w-full max-w-md p-8 relative">
+<button onclick="closeGetStartedModal()" class="absolute right-4 top-4 text-gray-500 hover:text-gray-700">
+<i class="ri-close-line text-xl"></i>
+</button>
+<div class="text-center mb-8">
+<h2 class="text-2xl font-bold text-gray-900">Join Gaujivanam</h2>
+<p class="text-gray-600 mt-2">Create your account to get started</p>
+</div>
+<form id="signupForm" class="space-y-6">
+<div>
+<label class="block text-sm font-medium text-gray-700 mb-2">Full Name</label>
+<input type="text" required class="w-full px-4 py-2 border border-gray-300 rounded-button focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary" placeholder="Enter your full name">
+</div>
+<div>
+<label class="block text-sm font-medium text-gray-700 mb-2">Email</label>
+<input type="email" required class="w-full px-4 py-2 border border-gray-300 rounded-button focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary" placeholder="Enter your email">
+</div>
+<div>
+<label class="block text-sm font-medium text-gray-700 mb-2">Password</label>
+<input type="password" required class="w-full px-4 py-2 border border-gray-300 rounded-button focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary" placeholder="Create a password">
+</div>
+<div>
+<label class="block text-sm font-medium text-gray-700 mb-2">Confirm Password</label>
+<input type="password" required class="w-full px-4 py-2 border border-gray-300 rounded-button focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary" placeholder="Confirm your password">
+</div>
+<div class="flex items-center">
+<input type="checkbox" required class="w-4 h-4 text-primary border-gray-300 rounded focus:ring-primary">
+<span class="ml-2 text-sm text-gray-600">I agree to the <a href="#" class="text-primary hover:text-primary/80">Terms of Service</a> and <a href="#" class="text-primary hover:text-primary/80">Privacy Policy</a></span>
+</div>
+<button type="submit" class="w-full py-2 px-4 bg-primary text-white rounded-button hover:bg-primary/90 font-medium">Create Account</button>
+<div class="relative my-6">
+<div class="absolute inset-0 flex items-center">
+<div class="w-full border-t border-gray-300"></div>
+</div>
+<div class="relative flex justify-center text-sm">
+<span class="px-2 bg-white text-gray-500">Or sign up with</span>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<button type="button" class="flex items-center justify-center gap-2 py-2 px-4 border border-gray-300 rounded-button hover:bg-gray-50">
+<i class="ri-google-fill text-xl"></i>
+<span>Google</span>
+</button>
+<button type="button" class="flex items-center justify-center gap-2 py-2 px-4 border border-gray-300 rounded-button hover:bg-gray-50">
+<i class="ri-facebook-fill text-xl"></i>
+<span>Facebook</span>
+</button>
+</div>
+<p class="text-center text-sm text-gray-600 mt-6">
+Already have an account?
+<a href="#" onclick="switchToLogin()" class="text-primary hover:text-primary/80 font-medium">Sign in</a>
+</p>
+</form>
+</div>
+</div>
+<div id="employeeLoginModal" class="fixed inset-0 bg-black/50 flex items-center justify-center hidden z-50">
+<div class="bg-white rounded-lg w-full max-w-md p-8 relative">
+<button onclick="closeEmployeeLoginModal()" class="absolute right-4 top-4 text-gray-500 hover:text-gray-700">
+<i class="ri-close-line text-xl"></i>
+</button>
+<div class="text-center mb-8">
+<h2 class="text-2xl font-bold text-gray-900">Employee Portal</h2>
+<p class="text-gray-600 mt-2">Sign in to your employee account</p>
+</div>
+<form id="employeeLoginForm" class="space-y-6">
+<div>
+<label class="block text-sm font-medium text-gray-700 mb-2">Employee ID</label>
+<input type="text" required class="w-full px-4 py-2 border border-gray-300 rounded-button focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary" placeholder="Enter your employee ID">
+</div>
+<div>
+<label class="block text-sm font-medium text-gray-700 mb-2">Password</label>
+<input type="password" required class="w-full px-4 py-2 border border-gray-300 rounded-button focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary" placeholder="Enter your password">
+</div>
+<div class="flex items-center justify-between">
+<label class="flex items-center">
+<input type="checkbox" class="w-4 h-4 text-primary border-gray-300 rounded focus:ring-primary">
+<span class="ml-2 text-sm text-gray-600">Remember me</span>
+</label>
+<a href="#" class="text-sm text-primary hover:text-primary/80">Forgot password?</a>
+</div>
+<button type="submit" class="w-full py-2 px-4 bg-primary text-white rounded-button hover:bg-primary/90 font-medium">Sign In</button>
+</form>
+</div>
+</div>
+<div id="loginModal" class="fixed inset-0 bg-black/50 flex items-center justify-center hidden z-50">
+<div class="bg-white rounded-lg w-full max-w-md p-8 relative">
+<button onclick="closeLoginModal()" class="absolute right-4 top-4 text-gray-500 hover:text-gray-700">
+<i class="ri-close-line text-xl"></i>
+</button>
+<div class="text-center mb-8">
+<h2 class="text-2xl font-bold text-gray-900">Welcome Back</h2>
+<p class="text-gray-600 mt-2">Sign in to your Gaujivanam account</p>
+</div>
+<form id="loginForm" class="space-y-6">
+<div>
+<label class="block text-sm font-medium text-gray-700 mb-2">Email</label>
+<input type="email" required class="w-full px-4 py-2 border border-gray-300 rounded-button focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary" placeholder="Enter your email">
+</div>
+<div>
+<label class="block text-sm font-medium text-gray-700 mb-2">Password</label>
+<input type="password" required class="w-full px-4 py-2 border border-gray-300 rounded-button focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary" placeholder="Enter your password">
+</div>
+<div class="flex items-center justify-between">
+<label class="flex items-center">
+<input type="checkbox" class="w-4 h-4 text-primary border-gray-300 rounded focus:ring-primary">
+<span class="ml-2 text-sm text-gray-600">Remember me</span>
+</label>
+<a href="#" class="text-sm text-primary hover:text-primary/80">Forgot password?</a>
+</div>
+<button type="submit" class="w-full py-2 px-4 bg-primary text-white rounded-button hover:bg-primary/90 font-medium">Sign In</button>
+<div class="relative my-6">
+<div class="absolute inset-0 flex items-center">
+<div class="w-full border-t border-gray-300"></div>
+</div>
+<div class="relative flex justify-center text-sm">
+<span class="px-2 bg-white text-gray-500">Or continue with</span>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<button type="button" class="flex items-center justify-center gap-2 py-2 px-4 border border-gray-300 rounded-button hover:bg-gray-50">
+<i class="ri-google-fill text-xl"></i>
+<span>Google</span>
+</button>
+<button type="button" class="flex items-center justify-center gap-2 py-2 px-4 border border-gray-300 rounded-button hover:bg-gray-50">
+<i class="ri-facebook-fill text-xl"></i>
+<span>Facebook</span>
+</button>
+</div>
+<p class="text-center text-sm text-gray-600 mt-6">
+Don't have an account?
+<a href="#" class="text-primary hover:text-primary/80 font-medium">Sign up</a>
+</p>
+</form>
+</div>
+</div>
+<style>
+.button-click {
+animation: buttonClick 0.3s ease-in-out;
+}
+@keyframes buttonClick {
+0% {
+transform: scale(1);
+}
+50% {
+transform: scale(0.95);
+}
+100% {
+transform: scale(1);
+}
+}
+.notification-slide {
+animation: slideIn 0.3s ease-out forwards;
+}
+@keyframes slideIn {
+from {
+transform: translateX(100%);
+opacity: 0;
+}
+to {
+transform: translateX(0);
+opacity: 1;
+}
+}
+</style>
+<script>
+const cartButtons = document.querySelectorAll('button');
+let cart = [];
+function addClickAnimation(element) {
+element.classList.add('button-click');
+element.addEventListener('animationend', () => {
+element.classList.remove('button-click');
+});
+}
+function showGetStartedModal() {
+document.getElementById('getStartedModal').classList.remove('hidden');
+document.body.style.overflow = 'hidden';
+}
+function closeGetStartedModal() {
+document.getElementById('getStartedModal').classList.add('hidden');
+document.body.style.overflow = 'auto';
+}
+function showLoginModal() {
+document.getElementById('loginModal').classList.remove('hidden');
+document.getElementById('getStartedModal').classList.add('hidden');
+document.body.style.overflow = 'hidden';
+}
+function toggleLoginDropdown() {
+  const dropdown = document.getElementById('loginDropdown');
+  dropdown.classList.toggle('hidden');
+  
+  // Close dropdown when clicking outside
+  document.addEventListener('click', function closeDropdown(e) {
+    if (!e.target.closest('.relative')) {
+      dropdown.classList.add('hidden');
+      document.removeEventListener('click', closeDropdown);
+    }
+  });
+}
+
+function closeLoginModal() {
+  document.getElementById('loginModal').classList.add('hidden');
+  document.body.style.overflow = 'auto';
+}
+function showEmployeeLoginModal() {
+document.getElementById('employeeLoginModal').classList.remove('hidden');
+document.body.style.overflow = 'hidden';
+}
+function closeEmployeeLoginModal() {
+document.getElementById('employeeLoginModal').classList.add('hidden');
+document.body.style.overflow = 'auto';
+}
+function switchToLogin() {
+document.getElementById('getStartedModal').classList.add('hidden');
+showLoginModal();
+}
+document.getElementById('signupForm').addEventListener('submit', (e) => {
+e.preventDefault();
+const name = e.target.querySelector('input[type="text"]').value;
+const email = e.target.querySelector('input[type="email"]').value;
+const password = e.target.querySelectorAll('input[type="password"]')[0].value;
+const confirmPassword = e.target.querySelectorAll('input[type="password"]')[1].value;
+if (password !== confirmPassword) {
+const notification = document.createElement('div');
+notification.className = 'fixed top-4 right-4 bg-red-500 text-white px-6 py-3 rounded-lg shadow-lg z-50 transition-all duration-300 notification-slide';
+notification.textContent = 'Passwords do not match!';
+document.body.appendChild(notification);
+setTimeout(() => {
+notification.style.opacity = '0';
+notification.style.transform = 'translateY(-20px)';
+setTimeout(() => notification.remove(), 300);
+}, 2000);
+return;
+}
+if (name && email && password && confirmPassword) {
+const notification = document.createElement('div');
+notification.className = 'fixed top-4 right-4 bg-green-500 text-white px-6 py-3 rounded-lg shadow-lg z-50 transition-all duration-300 notification-slide';
+notification.textContent = 'Account created successfully!';
+document.body.appendChild(notification);
+setTimeout(() => {
+notification.style.opacity = '0';
+notification.style.transform = 'translateY(-20px)';
+setTimeout(() => notification.remove(), 300);
+}, 2000);
+closeGetStartedModal();
+}
+});
+document.getElementById('employeeLoginForm').addEventListener('submit', (e) => {
+e.preventDefault();
+const employeeId = e.target.querySelector('input[type="text"]').value;
+const password = e.target.querySelector('input[type="password"]').value;
+if(employeeId && password) {
+const notification = document.createElement('div');
+notification.className = 'fixed top-4 right-4 bg-green-500 text-white px-6 py-3 rounded-lg shadow-lg z-50 transition-all duration-300 notification-slide';
+notification.textContent = 'Employee login successful!';
+document.body.appendChild(notification);
+setTimeout(() => {
+notification.style.opacity = '0';
+notification.style.transform = 'translateY(-20px)';
+setTimeout(() => notification.remove(), 300);
+}, 2000);
+closeEmployeeLoginModal();
+}
+});
+document.getElementById('loginForm').addEventListener('submit', (e) => {
+e.preventDefault();
+const email = e.target.querySelector('input[type="email"]').value;
+const password = e.target.querySelector('input[type="password"]').value;
+if(email && password) {
+const notification = document.createElement('div');
+notification.className = 'fixed top-4 right-4 bg-green-500 text-white px-6 py-3 rounded-lg shadow-lg z-50 transition-all duration-300 notification-slide';
+notification.textContent = 'Login successful!';
+document.body.appendChild(notification);
+setTimeout(() => {
+notification.style.opacity = '0';
+notification.style.transform = 'translateY(-20px)';
+setTimeout(() => notification.remove(), 300);
+}, 2000);
+closeLoginModal();
+}
+});
+cartButtons.forEach(button => {
+button.addEventListener('click', (e) => {
+addClickAnimation(e.target);
+const action = e.target.textContent.trim();
+let message = '';
+if(action === 'Add to Cart') {
+const productCard = e.target.closest('div.bg-[#FDF5E6]');
+const productName = productCard.querySelector('h3').textContent;
+const productPrice = productCard.querySelector('span').textContent;
+cart.push({
+name: productName,
+price: productPrice
+});
+message = `${productName} added to cart!`;
+} else if(action === 'Login') {
+showLoginModal();
+return;
+} else if(action === 'Get Started') {
+message = 'Coming soon!';
+} else if(action === 'Donate Now') {
+message = 'Thank you for your interest in donating!';
+} else if(action.includes('Learn')) {
+message = 'Loading more information...';
+} else if(action === 'View Products') {
+message = 'Redirecting to products page...';
+} else {
+message = 'Action completed successfully!';
+}
+if(message) {
+const notification = document.createElement('div');
+notification.className = 'fixed top-4 right-4 bg-green-500 text-white px-6 py-3 rounded-lg shadow-lg z-50 transition-all duration-300 notification-slide';
+notification.textContent = message;
+document.body.appendChild(notification);
+setTimeout(() => {
+notification.style.opacity = '0';
+notification.style.transform = 'translateY(-20px)';
+setTimeout(() => notification.remove(), 300);
+}, 2000);
+}
+});
+});
+function handleNavClick(event, section) {
+event.preventDefault();
+addClickAnimation(event.target);
+const navLinks = document.querySelectorAll('.nav-link');
+navLinks.forEach(l => l.classList.remove('active'));
+event.target.classList.add('active');
+let targetElement;
+switch(section) {
+case 'home':
+window.scrollTo({ top: 0, behavior: 'smooth' });
+break;
+case 'about':
+targetElement = document.querySelector('section:nth-of-type(2)');
+break;
+case 'cows':
+targetElement = document.querySelector('section:nth-of-type(3)');
+break;
+case 'shop':
+targetElement = document.querySelector('section:nth-of-type(4)');
+break;
+case 'adopt':
+targetElement = document.querySelector('section:nth-of-type(5)');
+break;
+case 'contact':
+targetElement = document.querySelector('footer');
+break;
+}
+if (targetElement) {
+const headerOffset = 64;
+const elementPosition = targetElement.getBoundingClientRect().top;
+const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+window.scrollTo({
+top: offsetPosition,
+behavior: 'smooth'
+});
+}
+}
+window.addEventListener('scroll', () => {
+const sections = [
+{ id: 'home', element: document.querySelector('section:nth-of-type(1)') },
+{ id: 'about', element: document.querySelector('section:nth-of-type(2)') },
+{ id: 'cows', element: document.querySelector('section:nth-of-type(3)') },
+{ id: 'shop', element: document.querySelector('section:nth-of-type(4)') },
+{ id: 'adopt', element: document.querySelector('section:nth-of-type(5)') },
+{ id: 'contact', element: document.querySelector('footer') }
+];
+const scrollPosition = window.scrollY + 100;
+sections.forEach(section => {
+if (section.element) {
+const sectionTop = section.element.offsetTop - 100;
+const sectionBottom = sectionTop + section.element.offsetHeight;
+if (scrollPosition >= sectionTop && scrollPosition < sectionBottom) {
+document.querySelectorAll('.nav-link').forEach(link => {
+link.classList.remove('active');
+if (link.getAttribute('data-section') === section.id) {
+link.classList.add('active');
+}
+});
+}
+}
+});
+});
+</script>
+</body>
+</html>
